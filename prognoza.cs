@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -34,7 +34,7 @@ namespace WeatherFromAPI
         */
 
         public void show()
-            
+
         {
             Console.WriteLine(time.Count + " " + symbol.Count + " " + deszcz.Count + " " + wilgotnosc.Count);
             for (int i = 0; i < time.Count && i < symbol.Count; i++)

@@ -22,6 +22,7 @@ namespace WeatherFromAPI
         public string wind;
         public string cloud;
         public string preassure;
+        public string tekst = "";
 
 
         public Form1()
@@ -63,10 +64,45 @@ namespace WeatherFromAPI
             int liczx = 0;
             int liczy = 0;
             int liczz = 0;
+
+            prognoza dzis = new prognoza();
             
             XmlReader xmlRreader = XmlReader.Create(@"c:\xxx\pogodapl.xml");
 
+            while (xmlRreader.Read())
+            {
+                if (xmlRreader.NodeType == XmlNodeType.Element)
+                {
+                    switch (xmlRreader.Name)
+                    {
+                        case "time":
+                            dzis.time.Add(xmlRreader.GetAttribute("from"));
+                            break;
+                        case "symbol":
+                            dzis.symbol.Add(xmlRreader.GetAttribute("name"));
+                            break;
+                        case "precipitation":
+                            if(xmlRreader.HasAttributes)
+                            {
+                                dzis.deszcz.Add(xmlRreader.GetAttribute("type"));
+                            }
+                            else
+                            {
+                                dzis.deszcz.Add("brak opadów");
+                            }
+                            
+                            break;
+                        case "humidity":
+                            dzis.wilgotnosc.Add(xmlRreader.GetAttribute("value"));
+                            break;
+                    }
+                }
 
+            }
+
+            dzis.show();
+
+            /*
                 while (xmlRreader.Read())
             {
 
@@ -145,12 +181,15 @@ namespace WeatherFromAPI
                 }
 
 
-
-
+                tekst = tekst + xxx;
+                
 
             }
-            weather1.tekst = yyy;
-            label7.Text = liczx.ToString() + " " + liczy.ToString() + " " + liczz.ToString() + " " + licz.ToString();
+
+            */
+            //label7.Text = tekst;
+            //weather1.tekst = yyy;
+            //label7.Text = liczx.ToString() + " " + liczy.ToString() + " " + liczz.ToString() + " " + licz.ToString();
             //List<Weather> pogody = new List<Weather>();
 
 
