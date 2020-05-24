@@ -66,26 +66,6 @@ namespace WeatherFromAPI
             
             XmlReader xmlRreader = XmlReader.Create(@"c:\xxx\pogodapl.xml");
 
-            while (xmlRreader.Read())
-            {
-                if ((xmlRreader.NodeType == XmlNodeType.Element) && (xmlRreader.Name == "time")) //wartość dla daty i godziny 
-                {
-                    if (xmlRreader.HasAttributes)
-                    {
-                        xxx = xmlRreader.GetAttribute("from");
-                        liczx++;
-                        licz++;
-                        //tabPogoda[licznik, 0] = time;
-
-                        //Console.WriteLine(xmlRreader.GetAttribute("from"));
-
-                    }
-
-                    //ttt
-
-                }
-            }
-
 
                 while (xmlRreader.Read())
             {
